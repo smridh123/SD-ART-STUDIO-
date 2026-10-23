@@ -4,125 +4,683 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#151515">
+  <meta name="theme-color" content="#10100e">
+  <meta name="description" content="SD ART STUDIO — Architecture, Interior Design and Modern Spaces. Thoughtfully designed spaces, built around you.">
   <title>SD ART STUDIO | Architecture & Interiors</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #fff;
+    :root {
+      --bg: #10100e;
+      --surface: #191916;
+      --gold: #d8b477;
+      --gold-light: #f0d6a4;
+      --text: #f7f5ef;
+      --muted: #aaa79e;
+      --line: rgba(216,180,119,.22);
     }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button, input, textarea, select { font: inherit; }
+
+    .container { width: min(1160px, 90%); margin: auto; }
+
+    .gold { color: var(--gold); }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: .73rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    h2 { font-size: clamp(2.1rem, 5vw, 3.5rem); }
+
+    .section { padding: 100px 0; }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 42px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 380px;
+      font-size: .95rem;
+    }
+
+    /* Navigation */
     header {
-      padding: 22px 7%;
+      height: 82px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(16,16,14,.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #333;
+      gap: 20px;
     }
-    .logo { color: #d8b477; font-size: 22px; font-weight: bold; }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 14px;
-      font-size: 14px;
+
+    .brand {
+      font-family: "Playfair Display", serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      white-space: nowrap;
     }
-    .hero {
-      min-height: 75vh;
-      padding: 70px 7%;
+
+    .brand small {
+      display: block;
+      font-family: "DM Sans", sans-serif;
+      color: var(--muted);
+      font-size: .58rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .nav-links {
       display: flex;
       align-items: center;
-      background:
-        linear-gradient(90deg, #111 5%, #111c 55%, #1115),
-        url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85')
-        center/cover;
+      gap: 28px;
+      list-style: none;
+      font-size: .85rem;
+      color: #e5e0d6;
     }
-    .hero-content { max-width: 650px; }
-    .tag { color: #d8b477; letter-spacing: 3px; }
-    h1 { font-size: clamp(38px, 7vw, 70px); margin: 18px 0; }
-    p { color: #ccc; line-height: 1.8; }
-    .btn {
-      display: inline-block;
-      margin: 15px 10px 0 0;
-      padding: 14px 22px;
-      background: #d8b477;
-      color: #111;
-      text-decoration: none;
-      font-weight: bold;
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .menu-btn {
+      display: none;
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid var(--line);
       border-radius: 4px;
+      padding: 7px 12px;
+      cursor: pointer;
     }
-    section { padding: 55px 7%; }
-    h2 { color: #d8b477; font-size: 30px; }
-    .services {
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 23px;
+      border: 1px solid var(--gold);
+      background: var(--gold);
+      color: #17140e;
+      font-size: .83rem;
+      font-weight: 700;
+      transition: .25s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: transparent;
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      color: var(--text);
+      background: transparent;
+      border-color: rgba(255,255,255,.4);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 690px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      isolation: isolate;
+      background:
+        linear-gradient(90deg, rgba(12,12,10,.94) 0%, rgba(12,12,10,.78) 46%, rgba(12,12,10,.22) 100%),
+        linear-gradient(0deg, rgba(12,12,10,.48), transparent 50%),
+        url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=85") center/cover;
+    }
+
+    .hero-content { max-width: 740px; padding: 90px 0; }
+
+    .hero h1 {
+      font-size: clamp(3rem, 7.5vw, 6.3rem);
+      margin: 20px 0;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 span { color: var(--gold); font-style: italic; }
+
+    .hero p {
+      max-width: 540px;
+      color: #d0cec6;
+      font-size: 1.05rem;
+      margin-bottom: 30px;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
+
+    .hero-note {
+      margin-top: 55px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.22);
+      color: #d2cec4;
+      font-size: .78rem;
+      letter-spacing: 1px;
+    }
+
+    /* Stats */
+    .stats {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--line);
+      border-top: 1px solid var(--line);
+    }
+
+    .stat { padding: 28px 15px; text-align: center; }
+    .stat strong {
+      display: block;
+      color: var(--gold);
+      font: 2rem "Playfair Display", serif;
+    }
+    .stat span { color: var(--muted); font-size: .8rem; }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-image { position: relative; padding: 0 25px 25px 0; }
+
+    .about-image img {
+      width: 100%;
+      height: 490px;
+      object-fit: cover;
+    }
+
+    .about-image::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 65%;
+      height: 65%;
+      border-right: 1px solid var(--gold);
+      border-bottom: 1px solid var(--gold);
+      z-index: -1;
+    }
+
+    .about-copy h2 { margin: 15px 0 23px; }
+    .about-copy p { color: var(--muted); margin-bottom: 17px; }
+
+    .check-list { list-style: none; margin: 25px 0 30px; }
+    .check-list li { padding: 7px 0; color: #e6e1d7; }
+    .check-list li::before { content: "✦"; color: var(--gold); margin-right: 12px; }
+
+    /* Services */
+    .services { background: var(--surface); }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
-    .service {
-      padding: 25px;
-      border: 1px solid #393939;
-      border-radius: 8px;
+
+    .service-card {
+      padding: 32px 27px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.015);
+      transition: .3s;
     }
-    footer {
-      padding: 25px 7%;
-      border-top: 1px solid #333;
-      color: #aaa;
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
+      background: rgba(216,180,119,.045);
+    }
+
+    .service-icon { font-size: 1.8rem; color: var(--gold); }
+    .service-card h3 { font-size: 1.45rem; margin: 18px 0 12px; }
+    .service-card p { color: var(--muted); font-size: .9rem; }
+
+    .service-link {
+      display: inline-block;
+      color: var(--gold);
+      margin-top: 22px;
+      font-size: .82rem;
+    }
+
+    /* Portfolio */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .project {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+      min-height: 310px;
+    }
+
+    .project img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      transition: transform .65s;
+    }
+
+    .project:hover img { transform: scale(1.055); }
+
+    .project-info {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 65px 25px 22px;
+      background: linear-gradient(transparent, rgba(0,0,0,.92));
+    }
+
+    .project-info span {
+      color: var(--gold-light);
+      font-size: .7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .project-info h3 { font-size: 1.65rem; margin-top: 5px; }
+
+    .portfolio-note {
+      color: var(--muted);
+      font-size: .83rem;
+      margin-top: 20px;
+    }
+
+    /* Process */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+      margin-top: 42px;
+    }
+
+    .process-step { border-top: 1px solid var(--gold); padding-top: 20px; }
+    .process-step .number { color: var(--gold); font-size: .78rem; letter-spacing: 2px; }
+    .process-step h3 { font-size: 1.35rem; margin: 14px 0 10px; }
+    .process-step p { color: var(--muted); font-size: .88rem; }
+
+    /* Call to action */
+    .cta {
+      text-align: center;
+      padding: 85px 25px;
+      background:
+        linear-gradient(rgba(15,15,12,.86), rgba(15,15,12,.91)),
+        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85") center/cover;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cta h2 { max-width: 750px; margin: 16px auto; }
+    .cta p { color: var(--muted); margin: 0 auto 28px; max-width: 570px; }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 60px;
+    }
+
+    .contact-copy h2 { margin: 14px 0 18px; }
+    .contact-copy > p { color: var(--muted); margin-bottom: 25px; }
+
+    .contact-item { margin: 22px 0; }
+    .contact-item strong {
+      display: block;
+      color: var(--gold);
+      font-size: .78rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .contact-item span { color: #e5e0d6; }
+
+    .contact-form {
+      padding: 32px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field { margin-bottom: 17px; }
+
+    .field label {
+      display: block;
+      font-size: .78rem;
+      margin-bottom: 7px;
+      color: #d8d2c7;
+    }
+
+    .field input, .field textarea, .field select {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #38372f;
+      background: #10100e;
+      color: white;
+      outline: none;
+      border-radius: 0;
+    }
+
+    .field input:focus, .field textarea:focus, .field select:focus {
+      border-color: var(--gold);
+    }
+
+    .field textarea { min-height: 125px; resize: vertical; }
+
+    .contact-form .btn { width: 100%; }
+
+    .form-note { color: var(--muted); font-size: .76rem; margin-top: 12px; }
+
+    /* Footer */
+    footer { padding: 35px 0; }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-row p { color: var(--muted); font-size: .78rem; }
+    .footer-links { display: flex; gap: 18px; font-size: .82rem; }
+    .footer-links a:hover { color: var(--gold); }
+
+    .whatsapp-float {
+      position: fixed;
+      z-index: 99;
+      right: 20px;
+      bottom: 20px;
+      width: 57px;
+      height: 57px;
+      border-radius: 50%;
+      background: #25d366;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 1.65rem;
+      box-shadow: 0 6px 25px rgba(0,0,0,.35);
+    }
+
+    .whatsapp-float:hover { transform: translateY(-3px); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 81px;
+        left: 0;
+        right: 0;
+        padding: 22px 5%;
+        background: #151512;
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+      }
+
+      .nav-links.open { display: flex; }
+      .menu-btn { display: inline-block; }
+      .nav > .btn { display: none; }
+
+      .hero { min-height: 620px; }
+      .hero h1 { letter-spacing: -1px; }
+
+      .section { padding: 72px 0; }
+      .section-head { align-items: flex-start; flex-direction: column; }
+
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 38px; }
+      .about-image img { height: 370px; }
+
+      .service-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 520px) {
+      .container { width: 90%; }
+      header { height: 72px; }
+      .nav-links { top: 71px; }
+      .brand { font-size: 1.25rem; }
+
+      .hero { min-height: 600px; }
+      .hero-content { padding: 70px 0; }
+      .hero h1 { font-size: clamp(2.8rem, 13vw, 4rem); }
+      .hero p { font-size: .95rem; }
+      .hero-actions .btn { width: 100%; }
+
+      .stats { grid-template-columns: 1fr; }
+      .stat { padding: 19px; border-bottom: 1px solid var(--line); }
+
+      .service-grid, .project-grid, .process-grid { grid-template-columns: 1fr; }
+      .project img { height: 300px; }
+      .contact-form { padding: 22px 17px; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+
+      .footer-row { flex-direction: column; align-items: flex-start; }
+      .whatsapp-float { width: 51px; height: 51px; right: 14px; bottom: 14px; }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <div class="logo">SD ART STUDIO</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home">
+        SD ART STUDIO
+        <small>Architecture & Interiors</small>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <a class="btn" href="#contact">Let's Talk ↗</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰ Menu</button>
     </nav>
   </header>
 
   <main>
-    <div class="hero" id="home">
-      <div class="hero-content">
-        <div class="tag">DESIGN • CREATE • INSPIRE</div>
-        <h1>Architecture That Inspires.</h1>
-        <p>
-          We create thoughtful architectural spaces and modern interiors
-          that bring your vision to life.
-        </p>
-        <a class="btn" href="#services">Explore Services</a>
-        <a class="btn" href="#contact">Contact Us</a>
-      </div>
-    </div>
-
-    <section id="services">
-      <h2>Our Services</h2>
-      <div class="services">
-        <div class="service">
-          <h3>Architecture Design</h3>
-          <p>Creative concepts and building design for your vision.</p>
-        </div>
-        <div class="service">
-          <h3>Interior Design</h3>
-          <p>Modern, elegant and functional interior spaces.</p>
-        </div>
-        <div class="service">
-          <h3>3D Visualization</h3>
-          <p>Visualize your project before construction begins.</p>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Architecture · Interior · Lifestyle</div>
+          <h1>Spaces that<br>tell your <span>story.</span></h1>
+          <p>
+            Thoughtful architecture. Beautiful interiors. Timeless design.
+            We transform your ideas into spaces that feel uniquely yours.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#projects">Explore Our Work ↗</a>
+            <a class="btn btn-outline" href="#contact">Start Your Project</a>
+          </div>
+          <div class="hero-note">DESIGNED WITH PURPOSE. CREATED TO INSPIRE.</div>
         </div>
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Let's Build Your Vision</h2>
-      <p>Contact SD ART STUDIO to discuss your next project.</p>
-      <a class="btn" href="https://wa.me/91XXXXXXXXXX">
-        Chat on WhatsApp
-      </a>
-      <p>Replace the WhatsApp link with your own business number.</p>
+    <section class="container stats" aria-label="Studio highlights">
+      <div class="stat"><strong>01</strong><span>Personalized Approach</span></div>
+      <div class="stat"><strong>02</strong><span>Design-Led Thinking</span></div>
+      <div class="stat"><strong>03</strong><span>Detail-Driven Spaces</span></div>
     </section>
-  </main>
 
-  <footer>© 2026 SD ART STUDIO. All rights reserved.</footer>
-</body>
-</html>
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-image reveal">
+          <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1100&q=85"
+               alt="Warm contemporary living room interior" loading="lazy">
+        </div>
+        <div class="about-copy reveal">
+          <div class="eyebrow">A little about us</div>
+          <h2>Designing beyond the <span class="gold">ordinary.</span></h2>
+          <p>
+            At SD ART STUDIO, we believe great design is more than appearance.
+            It is about how a space works, feels, and becomes part of everyday life.
+          </p>
+          <p>
+            From the first sketch to the finishing details, our approach combines
+            creativity, practical thinking, and attention to the needs of each client.
+          </p>
+          <ul class="check-list">
+            <li>Thoughtful and functional planning</li>
+            <li>Modern, elegant design concepts</li>
+            <li>Attention to materials and details</li>
+            <li>Solutions tailored to your vision</li>
+          </ul>
+          <a class="btn btn-outline" href="#contact">Discuss Your Ideas ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">What we do</div>
+            <h2 style="margin-top:12px">Our <span class="gold">expertise.</span></h2>
+          </div>
+          <p>Creative design solutions for homes, workspaces, and the places where life happens.</p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card reveal">
+            <div class="service-icon">⌂</div>
+            <h3>Architecture</h3>
+            <p>Modern architectural concepts, thoughtful layouts, and building designs shaped around your requirements.</p>
+            <a class="service-link" href="#contact">Discuss a project ↗</a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">◇</div>
+            <h3>Interior Design</h3>
+            <p>Beautiful, balanced interiors with considered colours, lighting, textures, furniture, and finishes.</p>
+            <a class="service-link" href="#contact">Discuss a project ↗</a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">▦</div>
+            <h3>Space Planning</h3>
+            <p>Smart space planning to make rooms more functional, comfortable, and visually connected.</p>
+            <a class="service-link" href="#contact">Discuss a project ↗</a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">✧</div>
+            <h3>3D Visualization</h3>
+            <p>Visual concepts that help you understand the look and feel of your proposed space before execution.</p>
+            <a class="service-link" href="#contact">Discuss a project ↗</a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">▤</div>
+            <h3>Renovation Concepts</h3>
+            <p>Fresh design ideas for upgrading existing spaces with a cohesive and considered approach.</p>
+            <a class="service-link" href="#contact">Discuss a project ↗</a>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">⌘</div>
+            <h3>Consultation</h3>
+            <p>Initial discussions to understand your goals, space, preferences, and the next steps for your project.</p>
+            <a class="service-link" href="#contact">Discuss a project ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <div class="eyebrow">Selected inspiration</div>
+            <h2 style="margin-top:12px">Spaces with <span class="gold">character.</span></h2>
+          </div>
+          <p>A glimpse of design directions and interiors that inspire our creative process.</p>
+        </div>
+
+        <div class="project-grid">
+          <article class="project reveal">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85"
+                 alt="Contemporary luxury residence" loading="lazy">
+            <div class="project-info">
+              <span>Residential · Modern</span>
+              <h3>The Modern Residence</h3>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <img src="https://images.unsplash.com/photo-1600210
