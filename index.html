@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#151515">
+  <title>SD ART STUDIO | Architecture & Interiors</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+    }
+    header {
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #333;
+    }
+    .logo { color: #d8b477; font-size: 22px; font-weight: bold; }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 14px;
+      font-size: 14px;
+    }
+    .hero {
+      min-height: 75vh;
+      padding: 70px 7%;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, #111 5%, #111c 55%, #1115),
+        url('https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=85')
+        center/cover;
+    }
+    .hero-content { max-width: 650px; }
+    .tag { color: #d8b477; letter-spacing: 3px; }
+    h1 { font-size: clamp(38px, 7vw, 70px); margin: 18px 0; }
+    p { color: #ccc; line-height: 1.8; }
+    .btn {
+      display: inline-block;
+      margin: 15px 10px 0 0;
+      padding: 14px 22px;
+      background: #d8b477;
+      color: #111;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+    section { padding: 55px 7%; }
+    h2 { color: #d8b477; font-size: 30px; }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+    }
+    .service {
+      padding: 25px;
+      border: 1px solid #393939;
+      border-radius: 8px;
+    }
+    footer {
+      padding: 25px 7%;
+      border-top: 1px solid #333;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">SD ART STUDIO</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero" id="home">
+      <div class="hero-content">
+        <div class="tag">DESIGN • CREATE • INSPIRE</div>
+        <h1>Architecture That Inspires.</h1>
+        <p>
+          We create thoughtful architectural spaces and modern interiors
+          that bring your vision to life.
+        </p>
+        <a class="btn" href="#services">Explore Services</a>
+        <a class="btn" href="#contact">Contact Us</a>
+      </div>
+    </div>
+
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="services">
+        <div class="service">
+          <h3>Architecture Design</h3>
+          <p>Creative concepts and building design for your vision.</p>
+        </div>
+        <div class="service">
+          <h3>Interior Design</h3>
+          <p>Modern, elegant and functional interior spaces.</p>
+        </div>
+        <div class="service">
+          <h3>3D Visualization</h3>
+          <p>Visualize your project before construction begins.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Let's Build Your Vision</h2>
+      <p>Contact SD ART STUDIO to discuss your next project.</p>
+      <a class="btn" href="https://wa.me/91XXXXXXXXXX">
+        Chat on WhatsApp
+      </a>
+      <p>Replace the WhatsApp link with your own business number.</p>
+    </section>
+  </main>
+
+  <footer>© 2026 SD ART STUDIO. All rights reserved.</footer>
+</body>
+</html>
